@@ -1,0 +1,15 @@
+version: 1
+dataset: paysim
+description: Synthetic mobile-money transactions used for portfolio development.
+columns:
+  step: {dtype: int64, nullable: false, min: 0}
+  type: {dtype: string, nullable: false, allowed: [CASH_IN, CASH_OUT, DEBIT, PAYMENT, TRANSFER]}
+  amount: {dtype: float64, nullable: false, min: 0}
+  nameOrig: {dtype: string, nullable: false}
+  oldbalanceOrg: {dtype: float64, nullable: false, min: 0}
+  newbalanceOrig: {dtype: float64, nullable: false, min: 0}
+  nameDest: {dtype: string, nullable: false}
+  oldbalanceDest: {dtype: float64, nullable: false, min: 0}
+  newbalanceDest: {dtype: float64, nullable: false, min: 0}
+  isFraud: {dtype: int64, nullable: false, allowed: [0, 1]}
+  isFlaggedFraud: {dtype: int64, nullable: false, allowed: [0, 1]}
