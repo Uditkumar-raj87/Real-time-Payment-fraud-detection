@@ -13,14 +13,7 @@ from sklearn.metrics import average_precision_score
 
 from src.data.ingest import clean_paysim
 from src.features.engineering import TARGET, build_features, feature_columns, time_split
-
-
-def rules_score(frame: pd.DataFrame) -> pd.Series:
-    return (
-        (frame["amount"] > frame["oldbalanceOrg"] * 0.95).astype(float) * 0.45
-        + frame["isFlaggedFraud"].astype(float) * 0.4
-        + frame["type"].isin(["TRANSFER", "CASH_OUT"]).astype(float) * 0.15
-    ).clip(0, 1)
+from src.models.rules import rules_score
 
 
 def evaluate_scores(labels: pd.Series, scores: pd.Series, review_capacity: int = 1000) -> dict:

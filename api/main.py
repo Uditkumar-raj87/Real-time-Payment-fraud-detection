@@ -5,17 +5,20 @@ from __future__ import annotations
 import time
 from pathlib import Path
 
-import joblib
 import pandas as pd
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 
 from src.features.engineering import build_features
-from src.models.train import rules_score
+from src.models.rules import rules_score
 
 app = FastAPI(title="Real-time Payment Fraud Detection", version="0.1.0")
 MODEL_PATH = Path("artifacts/model.joblib")
-bundle = joblib.load(MODEL_PATH) if MODEL_PATH.exists() else None
+try:
+    import joblib
+except ImportError:
+    joblib = None
+bundle = joblib.load(MODEL_PATH) if joblib is not None and MODEL_PATH.exists() else None
 
 
 class Transaction(BaseModel):
