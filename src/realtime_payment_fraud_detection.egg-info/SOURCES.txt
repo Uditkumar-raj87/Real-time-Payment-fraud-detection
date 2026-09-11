@@ -7,6 +7,7 @@ src/data/validate.py
 src/features/__init__.py
 src/features/engineering.py
 src/models/__init__.py
+src/models/rules.py
 src/models/train.py
 src/monitoring/__init__.py
 src/monitoring/drift.py
