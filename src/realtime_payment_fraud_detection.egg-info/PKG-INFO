@@ -1,0 +1,21 @@
+Metadata-Version: 2.4
+Name: realtime-payment-fraud-detection
+Version: 0.1.0
+Summary: Leakage-safe real-time payment fraud detection portfolio project
+Requires-Python: >=3.10
+Requires-Dist: fastapi<1,>=0.115
+Requires-Dist: joblib<2,>=1.4
+Requires-Dist: lightgbm<5,>=4.5
+Requires-Dist: mlflow<3,>=2.16
+Requires-Dist: pandas<3,>=2.0
+Requires-Dist: PyYAML<7,>=6
+Requires-Dist: requests<3,>=2.32
+Requires-Dist: scikit-learn<2,>=1.5
+Requires-Dist: streamlit<2,>=1.39
+Requires-Dist: uvicorn[standard]<1,>=0.30
+Provides-Extra: validation
+Requires-Dist: great-expectations<0.19,>=0.18.21; extra == "validation"
+Requires-Dist: pyarrow<20,>=14; extra == "validation"
+Provides-Extra: dev
+Requires-Dist: pytest<9,>=8; extra == "dev"
+Requires-Dist: ruff<1,>=0.6; extra == "dev"

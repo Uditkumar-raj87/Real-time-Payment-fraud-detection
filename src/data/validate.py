@@ -5,7 +5,6 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-import great_expectations as gx
 import pandas as pd
 import yaml
 
@@ -14,6 +13,12 @@ CONTRACT_PATH = Path(__file__).parents[2] / "data_contracts" / "paysim_contract.
 
 def validate_paysim(frame: pd.DataFrame, contract_path: str | Path = CONTRACT_PATH):
     """Run the contract expectations and return the Great Expectations result."""
+    try:
+        import great_expectations as gx
+    except ImportError as error:
+        raise RuntimeError(
+            "Great Expectations is optional; install with `pip install -e '.[validation]'`."
+        ) from error
     contract = yaml.safe_load(Path(contract_path).read_text(encoding="utf-8"))
     validator = gx.from_pandas(frame)
     validator.expect_table_columns_to_match_ordered_list(list(contract["columns"]))
