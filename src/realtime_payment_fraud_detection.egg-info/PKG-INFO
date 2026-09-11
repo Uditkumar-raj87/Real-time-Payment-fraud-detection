@@ -2,7 +2,7 @@ Metadata-Version: 2.4
 Name: realtime-payment-fraud-detection
 Version: 0.1.0
 Summary: Leakage-safe real-time payment fraud detection portfolio project
-Requires-Python: >=3.10
+Requires-Python: <3.14,>=3.10
 Requires-Dist: fastapi<1,>=0.115
 Requires-Dist: joblib<2,>=1.4
 Requires-Dist: lightgbm<5,>=4.5
